@@ -16,7 +16,7 @@ node {
 
         if (scmVars.GIT_BRANCH.indexOf('/feature/') > -1) {
             echo 'this is feature branch'
-        } if (scmVars.GIT_BRANCH.indexOf('/release/') > -1) {
+        } else if (scmVars.GIT_BRANCH.indexOf('/release/') > -1) {
             echo 'this is release branch'
         }
         else {
