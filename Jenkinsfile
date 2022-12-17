@@ -14,12 +14,12 @@ node {
         curBranch = scmVars.GIT_BRANCH
 
         if (curBranch.indexOf("feature/") > -1) {
-            sh "echo this is feature branch"
+            APPENV = "dev"
         } else if (curBranch.indexOf("release/") > -1) {
-            sh "echo this is release branch"
+            APPENV = "uat"
         }
         else {
-            sh "echo other branch"
+            APPENV = "prd"
         }
     }
 }
