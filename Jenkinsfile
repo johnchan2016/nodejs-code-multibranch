@@ -45,6 +45,11 @@ node {
         
     stage('Trigger ManifestUpdate') {
         echo "triggering updatemanifestjob"
-        build job: 'UpdateNodeManifest', parameters: [string(name: 'DOCKERTAG', value: "${IMAGETAG}"), string(name: 'APPENV', value: "${APPENV}")]
+        build job: 'nodejs-update-manifest-handle-multibranch', 
+        parameters: [
+            string(name: 'DOCKERTAG', value: "${IMAGETAG}"), 
+            string(name: 'APPENV', value: "${APPENV}"),
+            string(name: 'BRANCHNAME', value: "${curBranch}")
+            ]
     }
 }
