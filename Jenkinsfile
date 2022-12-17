@@ -11,6 +11,7 @@ node {
 
         gitCommit = scmVars.GIT_COMMIT.substring(0, 10);
 
+        sh 'echo scmVars'
         sh '${scmVars}'
     }
 }
