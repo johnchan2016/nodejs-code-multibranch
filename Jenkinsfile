@@ -10,7 +10,7 @@ node {
     stage('Clone repository') {     
         scmVars = checkout scm
 
-        sh "printenv"
+        echo sh(script: 'env|sort', returnStdout: true)
 
         /*
         gitCommit = scmVars.GIT_COMMIT.substring(0, 10);
