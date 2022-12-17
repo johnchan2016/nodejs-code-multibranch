@@ -13,16 +13,9 @@ node {
         gitCommit = scmVars.GIT_COMMIT.substring(0, 10);
         curBranch = scmVars.GIT_BRANCH
 
-        sh "echo GIT_BRANCH"
+        sh "echo curBranch"
         sh "${curBranch}"
 
-        if (curBranch.indexOf("feature/") > -1) {
-            sh "echo this is feature branch"
-        } else if (curBranch.indexOf("release/") > -1) {
-            sh "echo this is release branch"
-        }
-        else {
-            sh "echo other branch"
-        }
+
     }
 }
