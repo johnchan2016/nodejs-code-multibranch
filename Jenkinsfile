@@ -4,34 +4,26 @@ node {
     def scmVars
     def gitCommit
     def today = new Date()
+    def APPENV
+    def curBranch
 
     stage('Clone repository') {     
         scmVars = checkout scm
 
+        echo sh(script: 'env|sort', returnStdout: true)
+
+        /*
         gitCommit = scmVars.GIT_COMMIT.substring(0, 10);
-    }
+        curBranch = scmVars.GIT_BRANCH
 
-    stage('Build image') {  
-       app = docker.build("myhk2009/nodetest")
-    }
-
-    stage('Test image') { 
-        app.inside {
-            sh 'echo "Tests passed"'
+        if (curBranch.indexOf("feature/") > -1) {
+            APPENV = "dev"
+        } else if (curBranch.indexOf("release/") > -1) {
+            APPENV = "uat"
         }
-    }
-
-    stage('Push image') {        
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-
-            IMAGETAG = "${today.format('yyyyMMdd')}-${APPENV}-${gitCommit}"
-            app.push("${IMAGETAG}")
-	    app.push("latest")
+        else {
+            APPENV = "prd"
         }
-    }
-        
-    stage('Trigger ManifestUpdate') {
-        echo "triggering updatemanifestjob"
-        build job: 'UpdateNodeManifest', parameters: [string(name: 'DOCKERTAG', value: "${IMAGETAG}"), string(name: 'APPENV', value: "${APPENV}")]
+        */
     }
 }
