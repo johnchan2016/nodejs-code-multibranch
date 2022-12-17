@@ -14,9 +14,9 @@ node {
         sh "echo GIT_BRANCH"
         sh "${scmVars.GIT_BRANCH}"
 
-        if (scmVars.GIT_BRANCH.indexOf("/feature/") > -1) {
+        if (scmVars.GIT_BRANCH.indexOf("feature/") > -1) {
             sh "echo 'this is feature branch'"
-        } else if (scmVars.GIT_BRANCH.indexOf("/release/") > -1) {
+        } else if (scmVars.GIT_BRANCH.indexOf("release/") > -1) {
             sh "echo 'this is release branch'"
         }
         else {
