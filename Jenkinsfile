@@ -10,6 +10,9 @@ node {
     stage('Clone repository') {     
         scmVars = checkout scm
 
+        sh "printenv"
+
+        /*
         gitCommit = scmVars.GIT_COMMIT.substring(0, 10);
         curBranch = scmVars.GIT_BRANCH
 
@@ -21,5 +24,6 @@ node {
         else {
             APPENV = "prd"
         }
+        */
     }
 }
