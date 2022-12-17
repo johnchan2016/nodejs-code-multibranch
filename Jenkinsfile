@@ -12,7 +12,7 @@ node {
         gitCommit = scmVars.GIT_COMMIT.substring(0, 10);
 
         sh 'echo scmVars.GIT_BRANCH '
-        sh '${scmVars.GIT_BRANCH}'
+        sh '$scmVars.GIT_BRANCH'
 
         if (scmVars.GIT_BRANCH.indexOf('/feature/') > -1) {
             echo 'this is feature branch'
